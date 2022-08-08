@@ -1,0 +1,26 @@
+@* @{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Patron;
+
+<h2>Patron Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This patron has no books out.</p>
+}
+else
+{
+  <h4>Book checkout history of this patron :</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Book.Title</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to librarian home page", "Index","Librarian")</p> *@

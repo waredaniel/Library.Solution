@@ -1,0 +1,41 @@
+@* @{
+  Layout = "_Layout";
+}
+
+@using Library.Models;
+
+
+<h1>Active Patrons:</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No current patrons!</h3>
+} 
+
+<ul>
+  @foreach(Patron patron in Model)
+  {
+    <li>@Html.ActionLink($"{patron.Name}", "Details", "Patron", new { id = patron.PatronId })</li>
+  }
+</ul>
+
+
+
+<h2>Book Library:</h2>
+@if (@Model.Count == 0)
+{
+  <h3>No books in library!</h3>
+
+	<p>@Html.ActionLink("Add a book ", "Create", new {id = book.BookId})</p>
+} 
+
+<ul>
+  @foreach(Book book in Model)
+  {
+    <li>@Html.ActionLink($"{book.Title}", "Details", new { id = book.BookId })</li>
+  }
+</ul>
+
+
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p> *@
