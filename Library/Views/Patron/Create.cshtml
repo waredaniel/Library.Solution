@@ -10,8 +10,14 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
 
+  @Html.LabelFor(model => model.PhoneNumber)
+  @Html.TextBoxFor(model => model.PhoneNumber, new {@placeholder="xxx-xxx-xxxx"})
+
+  @Html.LabelFor(model=> model.DateJoined)
+  @Html.TextBoxFor(model => model.DateJoined, new {@type="date", @placeholder="MM-DD-YYYY"})
+
   @Html.Label("Select Book")
-  @Html.DropDownList("BookId", "Create w/o assigning a book")
+  @Html.DropDownList("BookId", "No book checkout")
 
   <input type="submit" value="Add new patron" />
 }

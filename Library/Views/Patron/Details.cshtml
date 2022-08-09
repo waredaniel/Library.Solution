@@ -7,6 +7,10 @@
 <h2>Patron Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.PhoneNumber): @Html.DisplayFor(model => model.PhoneNumber)</h3>
+<h3>@Html.DisplayNameFor(model => model.DateJoined): @Html.DisplayFor(model => model.DateJoined)</h3>
+
+
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -18,9 +22,18 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Book.Title</li>
+    using (Html.BeginForm("DeleteBook", "Patron"))
+    {
+      @Html.Hidden("joinId", @join.BookPatronId)
+      <li>
+        @join.Book.Title
+        <button type="submit" value="Delete Book">Click to Return Book</button>
+      </li>
+    }
   }
   </ul>
 }
-
-<p>@Html.ActionLink("Back to librarian home page", "Index","Librarian")</p>
+<p>@Html.ActionLink("Check out a book", "AddBook", new { id = Model.PatronId })</p>
+<p>@Html.ActionLink("Back to Patrons List", "Index","Patron")</p>
+<p>@Html.ActionLink("Edit Patron Info", "Edit", new { id = Model.PatronId })</p>
+<p>@Html.ActionLink("Delete Patron", "Delete", new { id = Model.PatronId })</p>

@@ -39,5 +39,49 @@ namespace Library.Controllers
       }
       return RedirectToAction("Index");
   }
+
+  public ActionResult Details(int id)
+  {
+    var thisBook = _db.Books
+      .Include(book => book.JoinEntities)
+      .ThenInclude(join => join.Patron)
+      .FirstOrDefault(book => book.BookId == id);
+    return View(thisBook);
+  }
+
+   public ActionResult Edit(int id)
+    {
+      var thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      ViewBag.PatronId = new SelectList(_db.Patrons, "PatronId", "Name");
+      return View(thisBook);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Book book, int PatronId)
+    {
+      if (PatronId != 0)
+      {
+        _db.BookPatrons.Add(new BookPatron() { PatronId = PatronId, BookId = book.BookId });
+      }
+      _db.Entry(book).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+     public ActionResult Delete(int id)
+    {
+      var thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      return View(thisBook);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
+      _db.Books.Remove(thisBook);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    
 }
 }
