@@ -2,23 +2,34 @@
   Layout = "_Layout";
 }
 
-@model Library.Models.Patron
+@model Library.Models.Patron;
 
-<h4>Add a new Patron</h4>
+<h4>Add a New Patron</h4>
+
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
+  <h2> First Name: </h2>
+  @Html.TextBoxFor(model => model.FirstName)
 
-  @Html.LabelFor(model => model.PhoneNumber)
-  @Html.TextBoxFor(model => model.PhoneNumber, new {@placeholder="xxx-xxx-xxxx"})
+  <h2> Last Name: </h2>
+  @Html.TextBoxFor(model => model.LastName)
 
-  @Html.LabelFor(model=> model.DateJoined)
-  @Html.TextBoxFor(model => model.DateJoined, new {@type="date", @placeholder="MM-DD-YYYY"})
+  <h2>Address:</h2>
+  <p> Street Address: </p> @Html.TextBoxFor(model => model.StreetAddress)
+  <p> City, State: </p> @Html.TextBoxFor(model => model.CityState, new {@placeholder="City,State"})
 
-  @Html.Label("Select Book")
-  @Html.DropDownList("BookId", "No book checkout")
+  <h2> Phone Number: </h2>
+  @Html.TextBoxFor(model => model.PhoneNumber, new { @value="+1-(xxx)-xxx-xxxx"})
 
-  <input type="submit" value="Add new patron" />
+  <h2> Date Joined </h2>
+  @Html.TextBoxFor(model => model.DateJoined, new {@type="date", @placeholder="yyyy-mm-dd"})
+
+  <div class="form-group">
+  <h2> Check out Book:</h2>
+  @Html.DropDownList("BookId", "Not Now")
+  </div>
+
+  <input id="btn" type="submit" value="Add New Patron" required>
 }
-<p>@Html.ActionLink("Show all patrons", "Index")</p>
+
+@Html.ActionLink("Patron List", "Index")

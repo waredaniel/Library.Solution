@@ -4,21 +4,26 @@
 
 @model Library.Models.Patron;
 
-<h2>Patron Details</h2>
-<hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h3>@Html.DisplayNameFor(model => model.PhoneNumber): @Html.DisplayFor(model => model.PhoneNumber)</h3>
-<h3>@Html.DisplayNameFor(model => model.DateJoined): @Html.DisplayFor(model => model.DateJoined)</h3>
+<h1>Patron Details</h1>
+<hr>
+<h4>First Name:</h4> <p> @Html.DisplayFor(model => model.FirstName)</p>
 
+<h4>Last Name: </h4> <p> @Html.DisplayFor(model=> model.LastName)</p>
 
-
+<h4>Address:</h4>
+  <p> @Html.DisplayFor(model => model.StreetAddress)
+  @Html.DisplayFor(model => model.CityState)</p>
+<h4>Phone Number:</h4><p>@Html.DisplayFor(model => model.PhoneNumber)</p>
+<h4>Date Joined:<h4> <p>@Html.DisplayFor(model => model.DateJoined)</p>
+<h4>Checked Books:</h4>
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This patron has no books out.</p>
+  <p>No books signed out!
+  @Html.ActionLink("Click Here", "AddBook", new { id = Model.PatronId}) to checkout a book!
+  </p>
 }
 else
 {
-  <h4>Book checkout history of this patron :</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
@@ -26,14 +31,19 @@ else
     {
       @Html.Hidden("joinId", @join.BookPatronId)
       <li>
-        @join.Book.Title
-        <button type="submit" value="Delete Book">Click to Return Book</button>
+        <h4> @join.Book.Title
+        </h4>
+
+      <input id="btn" type="submit" value="Return Book">
       </li>
     }
   }
   </ul>
 }
-<p>@Html.ActionLink("Check out a book", "AddBook", new { id = Model.PatronId })</p>
-<p>@Html.ActionLink("Back to Patrons List", "Index","Patron")</p>
-<p>@Html.ActionLink("Edit Patron Info", "Edit", new { id = Model.PatronId })</p>
-<p>@Html.ActionLink("Delete Patron", "Delete", new { id = Model.PatronId })</p>
+<hr>
+
+<h6>@Html.ActionLink("Edit Patron", "Edit", new { id = Model.PatronId })</h6>
+
+<h6>@Html.ActionLink("Delete Patron", "Delete", new { id = Model.PatronId })</h6>
+
+<h6>@Html.ActionLink("Patron List", "Index","Patron")</h6>

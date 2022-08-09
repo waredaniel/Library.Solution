@@ -16,9 +16,9 @@
   @Html.EditorFor(model => model.Title)
 
   @Html.Label("Select Patron")
-  @Html.DropDownList("PatronId")
+  @Html.DropDownList("PatronId", "patron")
 
-  <input type="submit" value="Save" />
+  <input id="btn" type="submit" value="Save" />
 }
 
 <p>@Html.ActionLink("Back to Books list", "Index")</p>

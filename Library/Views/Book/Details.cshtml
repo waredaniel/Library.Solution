@@ -6,7 +6,9 @@
 
 <h2>Book Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h3>Book Title: @Html.DisplayFor(model => model.Title)</h3>
+<h5>Author: @Html.DisplayFor(model => model.Author)</h5>
+<h5>Published: @Html.DisplayFor(model=>model.PublishDate)</h5>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -18,16 +20,16 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Patron.Name</li>
+    <li>@join.Patron.FirstName</li>
     @* @using (Html.BeginForm("DeleteCategory", "Items")) *@
     {
       @Html.Hidden("joinId", @join.BookPatronId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Return Book"/>
     }
   }
   </ul>
 }
 
-<p>@Html.ActionLink("Back to Book list", "Index")</p>
-<p>@Html.ActionLink("Edit Book", "Edit", new { id = Model.BookId })</p>
-<p>@Html.ActionLink("Delete Book", "Delete", new { id = Model.BookId })</p>
+<p> @Html.ActionLink("Book list", "Index")</p>
+<p>@Html.ActionLink("Edit Book", "Edit", new {id= Model.BookId})</p>
+<p>@Html.ActionLink("Delete Book", "Delete", new { id =Model.BookId })</p>

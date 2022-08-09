@@ -8,14 +8,14 @@
 
 @if (@Model.Count == 0)
 {
-  <h3> No one has joined our library yet !</h3>
+  <h3> No library Patrons!</h3>
 } 
 
 <ul>
   @foreach(Patron patron in Model)
   {
-    <li>@Html.ActionLink($"{patron.Name}", "Details", new { id = patron.PatronId })</li>
+    <li>@Html.ActionLink($"{patron.FirstName} ,{patron.LastName}", "Details", new { id = patron.PatronId })</li>
   }
 </ul>
 
-<p>@Html.ActionLink("Create Patron","Create","Patron")</p>
+<p>@Html.ActionLink("New Patron","Create","Patron")</p>

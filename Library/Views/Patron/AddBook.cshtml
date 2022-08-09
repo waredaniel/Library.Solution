@@ -4,15 +4,12 @@
 
 @model Library.Models.Patron;
 
-
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.PatronId)
+  {
+  @Html.DropDownList("BookId", "Not Now")
+}}
 
-  @Html.Label("Select Book")
-  @Html.DropDownList("BookId")
 
-  <input type="submit" value="Save" />
-}
-
-<p>@Html.ActionLink("Back to Patrons List", "Index")</p>
+<p>@Html.ActionLink("Patron List", "Index")</p>

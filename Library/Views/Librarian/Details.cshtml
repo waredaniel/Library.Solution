@@ -10,11 +10,11 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This patron has no books out.</p>
+  <p>No books!</p>
 }
 else
 {
-  <h4>Book checkout history of this patron :</h4>
+  <h4>Book Checkout History of this patron :</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {

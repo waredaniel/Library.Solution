@@ -9,7 +9,8 @@
 
 @if (@Model.Count == 0)
 {
-  <h3>No current patrons!</h3>
+  <h4>No current patrons!</h4>
+  <p>@Html.ActionLink("Add Patron", "Create", new {id = patron.patronId})</p>
 } 
 
 <ul>
@@ -20,22 +21,16 @@
 </ul>
 
 
-
-<h2>Book Library:</h2>
+<h1>Book Library:</h1>
 @if (@Model.Count == 0)
 {
-  <h3>No books in library!</h3>
-
-	<p>@Html.ActionLink("Add a book ", "Create", new {id = book.BookId})</p>
+  <h4>No books in library!</h4>
+	<p>@Html.ActionLink("Add Book ", "Create", new {id = book.BookId})</p>
 } 
-
 <ul>
   @foreach(Book book in Model)
   {
     <li>@Html.ActionLink($"{book.Title}", "Details", new { id = book.BookId })</li>
   }
 </ul>
-
-
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p> *@
+ *@

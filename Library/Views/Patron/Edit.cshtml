@@ -2,26 +2,37 @@
   Layout = "_Layout";
 }
 
-@model Library.Models.Patron
+@model Library.Models.Patron;
 
-<h2>Edit</h2>
-
-<h4>Edit this Patron: @Html.DisplayFor(model => model.Name)</h4>
+<h1>Edit Patron </h1>
+<hr>
+<h5>
+@Html.DisplayFor(model => model.FirstName)
+@Html.DisplayFor(model => model.FirstName)
+</h5>
+<hr>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.PatronId)
 
-  @Html.LabelFor(model => model.Name)
-  @Html.EditorFor(model => model.Name)
-
-  @Html.LabelFor(model => model.PhoneNumber)
+ <h2>First Name:</h2>
+  @Html.EditorFor(model => model.FirstName)
+  <br>
+  <h2>Last Name:</h2>
+  @Html.EditorFor(model=> model.LastName)
+  <br>
+  <h2>Phone Number:</h2>
   @Html.EditorFor(model => model.PhoneNumber)
+  <br>
 
-  @Html.LabelFor(model => model.DateJoined)
+  <h2>Address:</h2>
+  <p> Street Address: </p> @Html.EditorFor(model => model.StreetAddress)
+  <p> City, State: </p> @Html.EditorFor(model => model.CityState, new {@placeholder="City,State"})
+  <br>
+  <h2>Date Joined:</h2>
   @Html.EditorFor(model=> model.DateJoined)
-
-
-  <input type="submit" value="Save" />
+  <br>
+  <input id="btn" type="submit" value="Save Changes" required/>
 }
-<p>@Html.ActionLink("Back to Patrons list", "Index")</p>
+<p>@Html.ActionLink("Patron List", "Index")</p>

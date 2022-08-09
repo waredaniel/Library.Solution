@@ -4,16 +4,23 @@
 
 @model Library.Models.Book
 
-<h4>Add a new book</h4>
+<h3>Add a new book</h3>
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Title)
+
+  <h5>Title:</h5>
   @Html.TextBoxFor(model => model.Title)
+  <h5>Author:</h5>
+  @Html.TextBoxFor(model => model.Author)
 
-  @Html.Label("Select Patron")
-  @Html.DropDownList("PatronId", "Create w/o patron")
+  <h5>Publishing Date:</h5>
+  @Html.TextBoxFor(model => model.PublishDate, new {@type="date", @placeholder="yyyy-mm-dd"})
 
-  <input type="submit" value="Add new item" class="btn btn-default" />
+  <h5> Patron Checking Out this Book: </h5>
+  @Html.Label("Patron")
+  @Html.DropDownList("PatronId", "Patron")
+
+  <input type="submit" value="Add new item" class="btn btn-default" , required/>
 }
-<p>@Html.ActionLink("Show all books", "Index")</p>
+<p>@Html.ActionLink("Book List", "Index")</p>

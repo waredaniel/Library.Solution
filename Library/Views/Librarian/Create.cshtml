@@ -4,11 +4,11 @@
 
 @model Library.Models.Book;
 
-<h4>Add a book to library</h4>
+<h4>Add Book to Library</h4>
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Title)
+<h5>Book title:</h5>
   @Html.TextBoxFor(model => model.Title)
-  <input type="submit" value="Add Book" />
+  <input id="btn" type="submit" value="Add Book" required/>
 }
-<p>@Html.ActionLink("View Book Library", "Index")</p> *@
+<p>@Html.ActionLink("Book List", "Index")</p> *@
