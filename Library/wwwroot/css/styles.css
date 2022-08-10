@@ -18,13 +18,13 @@ div#footer {
   left:0px;
   text-align: left;
   width:100%;
-  color: rgb(0, 0, 0);
-  background:rgb(255, 99, 99);
+  color: rgb(255, 255, 255);
+  background:rgb(255, 113, 5);
   padding:15px;
   padding-left: 35px;
-  font-family: 'Mulish', sans-serif;
-  font-weight: 900;
-  font-size: 75px;
+  font-family: 'Mulish';
+  font-weight: 600;
+  font-size: 50px;
   border-color:rgb(255, 94, 0);
   border-style: solid;
   border-width: 3px;
@@ -97,5 +97,9 @@ main {
   border-width: 1px;
 }
 
-
+.navLink {
+  font-size: 40pt;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:white;
+}
 
