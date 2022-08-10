@@ -4,15 +4,23 @@ using Microsoft.AspNetCore.Mvc;
 using Library.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Library.Controllers
 {
+  [Authorize(Roles = "Librarian")]
   public class PatronController : Controller
   {
     private readonly LibraryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public PatronController(LibraryContext db)
+    public PatronController(UserManager<ApplicationUser> userManager, LibraryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 

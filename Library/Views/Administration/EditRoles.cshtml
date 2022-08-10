@@ -1,0 +1,42 @@
+@using Library.ViewModels
+@using Microsoft.AspNetCore.Identity
+@model EditRoleViewModel  
+
+@{
+  Layout = "_Layout";
+}
+
+<h1>Edit Role</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.Id)
+
+  @Html.LabelFor(model => model.RoleName)
+  @Html.EditorFor(model => model.RoleName)
+
+
+  <input type="submit" value="Save" />
+}
+
+<div class="card" style="width: 18rem;">
+  <div class ="card-header">
+    <h3>Users in this role</h3>
+  </div>
+  <div class="card-body">
+    @if(Model.Users.Any())
+    {
+      foreach(var user in Model.Users) 
+      {
+        <h5 class="card-title">@user</h5>
+      }
+    }
+    else
+    {
+      <h5 class="card-title">None at the moment</h5>
+    }
+  </div>
+  <div class="card-footer">
+    <p>@Html.ActionLink("Add or Remove User", "EditUsersInRole","Administration", new { roleId = @Model.Id })</p>
+  </div>
+</div>

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Library.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 
 namespace Library.Controllers
@@ -23,7 +24,7 @@ namespace Library.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.PatronId = new SelectList(_db.Patrons, "PatronId", "Name");
+      ViewBag.PatronId = new SelectList(_db.Patrons, "PatronId", "LastName");
       return View();
     }
 
@@ -81,6 +82,19 @@ namespace Library.Controllers
       _db.Books.Remove(thisBook);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+     [HttpGet]
+    public ActionResult ShowSearch()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult ShowSearch(string searchPhrase)
+    {
+      List<Book> model = _db.Books.Where(p => p.Title.ToLower().Contains(searchPhrase.ToLower()) || p.Author.ToLower().Contains(searchPhrase.ToLower())).ToList();
+      return View("Index", model);
     }
     
 }

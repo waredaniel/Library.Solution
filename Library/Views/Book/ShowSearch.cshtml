@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Library.Models;
+@model List<Library.Models.Book>;
+
+<div class="container">
+  <form action="/Book/ShowSearch" method="post">
+    <label for="searchPhrase">Search Phrase: </label>
+    <input name="searchPhrase" id="searchPhrase" type="text">
+    <button type="submit">Search!</button>
+  </form>
+</div>

@@ -14,7 +14,7 @@
 <ul>
   @foreach(Patron patron in Model)
   {
-    <li>@Html.ActionLink($"{patron.FirstName} ,{patron.LastName}", "Details", new { id = patron.PatronId })</li>
+    <li>@Html.ActionLink($"{patron.LastName}, {patron.FirstName}", "Details", new { id = patron.PatronId })</li>
   }
 </ul>
 

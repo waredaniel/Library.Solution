@@ -17,5 +17,6 @@ namespace Library.Models
     public string PhoneNumber {get; set;}
     public string DateJoined {get;set;}
     public virtual ICollection<BookPatron> JoinEntities { get;}
+    public virtual ApplicationUser User { get; set; }
   }
 }

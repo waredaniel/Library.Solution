@@ -4,6 +4,7 @@ namespace Library.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
+        // string userLibrarian
+        // string userPatron
     }
 }

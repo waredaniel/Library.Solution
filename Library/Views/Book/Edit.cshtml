@@ -14,9 +14,13 @@
 
   @Html.LabelFor(model => model.Title)
   @Html.EditorFor(model => model.Title)
-
-  @Html.Label("Select Patron")
-  @Html.DropDownList("PatronId", "patron")
+  @Html.LabelFor(model => model.Author)
+  @Html.EditorFor(model => model.Author)
+  @Html.LabelFor(model => model.PublishDate)
+  @Html.EditorFor(model => model.PublishDate)
+  
+  @* @Html.Label("Select Patron")
+  @Html.DropDownList("PatronId", "Patron") *@
 
   <input id="btn" type="submit" value="Save" />
 }
